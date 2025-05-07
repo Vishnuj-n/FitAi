@@ -27,11 +27,11 @@ const getEnvVariable = (key, fallback = '') => {
 
 // Configuration object to store all app settings and API keys
 const config = {
-  // API Keys (with fallbacks to allow local development, but should use environment variables in production)
+  // API Keys (using only environment variables, no hardcoded fallbacks)
   apiKeys: {
-    tomtom: getEnvVariable('TOMTOM_API_KEY', 'JXPnqva3lZanMKstFTttkppZnHor4IXr'),
-    serper: getEnvVariable('SERPER_API_KEY', '67c090a334109db4480037614dbb1c635f29ad83'),
-    groq: getEnvVariable('GROQ_API_KEY', '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')
+    tomtom: getEnvVariable('TOMTOM_API_KEY', ''),
+    serper: getEnvVariable('SERPER_API_KEY', ''),
+    groq: getEnvVariable('GROQ_API_KEY', '')
   },
   
   // API Base URLs
