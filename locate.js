@@ -4,8 +4,8 @@
  * It uses TomTom Maps API to search for gyms and parks
  */
 
-// Store TomTom API key 
-const TOM_TOM_API_KEY = 'JXPnqva3lZanMKstFTttkppZnHor4IXr'; // Updated API key for better reliability
+// Get TomTom API key from config
+const TOM_TOM_API_KEY = window.FitAiConfig?.apiKeys?.tomtom || '';
 
 // Global variables
 let map = null;
