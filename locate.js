@@ -4,8 +4,29 @@
  * It uses TomTom Maps API to search for gyms and parks
  */
 
-// Get TomTom API key from config
-const TOM_TOM_API_KEY = window.FitAiConfig?.apiKeys?.tomtom || '';
+// Debug information to help troubleshoot Vercel deployment
+console.log('locate.js loaded');
+console.log('Environment check:', {
+    hasWindow: typeof window !== 'undefined',
+    hasTT: typeof tt !== 'undefined',
+    hasConfig: typeof window !== 'undefined' && !!window.FitAiConfig,
+    hasEnv: typeof window !== 'undefined' && !!window.__env
+});
+
+// Log full config for debugging
+if (typeof window !== 'undefined' && window.FitAiConfig) {
+    console.log('FitAiConfig available:', window.FitAiConfig);
+} else {
+    console.error('FitAiConfig not available!');
+}
+
+// Get TomTom API key from config with fallback mechanism for Vercel
+const TOM_TOM_API_KEY = 
+    (typeof window !== 'undefined' && window.FitAiConfig && window.FitAiConfig.apiKeys && window.FitAiConfig.apiKeys.tomtom) || 
+    (typeof window !== 'undefined' && window.__env && window.__env.TOMTOM_API_KEY) ||
+    'JXPnqva3lZanMKstFTttkppZnHor4IXr'; // Fallback for debugging only
+
+console.log('Using TOM_TOM_API_KEY:', TOM_TOM_API_KEY);
 
 // Global variables
 let map = null;

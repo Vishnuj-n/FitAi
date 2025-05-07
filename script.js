@@ -25,8 +25,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const sendChatButton = document.getElementById('send-chat');    const chatMessages = document.getElementById('chat-messages');
     const popularTopics = document.querySelectorAll('.popular-topic');
     
-    // Get Groq API key from config
-    const GROQ_API_KEY = window.FitAiConfig?.apiKeys?.groq;
+    // Log config availability for debugging
+    console.log('Chatbot initialization - Config check:', {
+        hasWindow: typeof window !== 'undefined',
+        hasConfig: typeof window !== 'undefined' && !!window.FitAiConfig,
+        hasGroqConfig: typeof window !== 'undefined' && window.FitAiConfig && !!window.FitAiConfig.apiKeys && !!window.FitAiConfig.apiKeys.groq,
+        hasEnv: typeof window !== 'undefined' && !!window.__env
+    });
+    
+    // Get Groq API key from config with fallback mechanisms
+    const GROQ_API_KEY = 
+        (typeof window !== 'undefined' && window.FitAiConfig && window.FitAiConfig.apiKeys && window.FitAiConfig.apiKeys.groq) || 
+        (typeof window !== 'undefined' && window.__env && window.__env.GROQ_API_KEY) ||
+        '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'; // Fallback for debugging only
+        
+    console.log('Using GROQ_API_KEY:', GROQ_API_KEY ? 'Key available (not showing for security)' : 'No key available');
     
     // Conversation history to maintain context
     let conversationHistory = [

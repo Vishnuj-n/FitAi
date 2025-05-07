@@ -5,23 +5,41 @@
 
 // For client-side (browser) rendering, we need special handling since process.env isn't available
 const getEnvVariable = (key, fallback = '') => {
-  // In browser environment, use window.__env if it exists (injected by Vercel)
+  console.log(`Getting env variable: ${key}`);
+  
+  // In browser environment, check multiple sources
   if (typeof window !== 'undefined') {
-    if (window.__env && window.__env[key]) {
-      return window.__env[key];
-    }
-    // If running locally with a global ENV object (optional approach)
+    // First priority: window.ENV (set by our env-preload.js)
     if (window.ENV && window.ENV[key]) {
+      console.log(`Found ${key} in window.ENV`);
       return window.ENV[key];
     }
+    
+    // Second priority: window.__env (injected by Vercel)
+    if (window.__env && window.__env[key]) {
+      console.log(`Found ${key} in window.__env`);
+      return window.__env[key];
+    }
+    
+    // Third priority: Next.js public variables
+    const nextPublicKey = `NEXT_PUBLIC_${key}`;
+    if (window[nextPublicKey]) {
+      console.log(`Found ${key} as ${nextPublicKey}`);
+      return window[nextPublicKey];
+    }
+    
+    console.log(`Using fallback for ${key}`);
     return fallback;
   }
   
   // In Node.js environment (like build scripts)
   if (typeof process !== 'undefined' && process.env) {
-    return process.env[key] || fallback;
+    const value = process.env[key] || fallback;
+    console.log(`Using Node process.env.${key}`);
+    return value;
   }
   
+  console.log(`No environment found, using fallback for ${key}`);
   return fallback;
 };
 
