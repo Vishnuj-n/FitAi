@@ -215,12 +215,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const planFormContainer = document.getElementById('plan-form-container');
     const loadingSpinner = document.getElementById('loading-spinner');
     const planResults = document.getElementById('plan-results');
-    const planSummary = document.getElementById('plan-summary');
-    const workoutDays = document.getElementById('workout-days');
+    const planSummary = document.getElementById('plan-summary');    const workoutDays = document.getElementById('workout-days');
     const downloadPdfBtn = document.getElementById('download-pdf');
     
-    // Groq API key - same key used for the chatbot
-    const GROQ_API_KEY = "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";
+    // Groq API key from config
+    const GROQ_API_KEY = window.FitAiConfig?.apiKeys?.groq;
     
     if (planForm) {
         planForm.addEventListener('submit', async function(e) {
