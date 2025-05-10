@@ -36,8 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Get Groq API key from config with fallback mechanisms
     const GROQ_API_KEY = 
         (typeof window !== 'undefined' && window.FitAiConfig && window.FitAiConfig.apiKeys && window.FitAiConfig.apiKeys.groq) || 
-        (typeof window !== 'undefined' && window.__env && window.__env.GROQ_API_KEY) ||
-        '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'; // Fallback for debugging only
+        (typeof window !== 'undefined' && window.__env && window.__env.GROQ_API_KEY)// Fallback for debugging only
         
     console.log('Using GROQ_API_KEY:', GROQ_API_KEY ? 'Key available (not showing for security)' : 'No key available');
     

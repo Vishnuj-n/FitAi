@@ -219,12 +219,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const workoutDays = document.getElementById('workout-days');
     const downloadPdfBtn = document.getElementById('download-pdf');
     
-    // Groq API key - same key used for the chatbot
-    const GROQ_API_KEY = "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";
+    // Use Groq API key from global FitAiConfig
+    if (!window.FitAiConfig || !window.FitAiConfig.apiKeys || !window.FitAiConfig.apiKeys.groq) {
+        console.error('Groq API key not configured in FitAiConfig');
+    }
     
     if (planForm) {
         planForm.addEventListener('submit', async function(e) {
             e.preventDefault();
+            
+            // Check if API key is configured
+            if (!window.FitAiConfig || !window.FitAiConfig.apiKeys || !window.FitAiConfig.apiKeys.groq) {
+                alert('API configuration is missing. Please check your setup.');
+                return;
+            }
             
             // Get form data
             const firstName = document.getElementById('first-name').value;
