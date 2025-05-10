@@ -5,12 +5,22 @@
 
 /* Event Cards */
 .event-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    border-left-width: 4px;
 }
 
 .event-card:hover {
-    transform: translateY(-5px);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Date box in event cards */
+.event-card .bg-primary\/10 {
+    transition: all 0.3s ease;
+}
+
+.event-card:hover .bg-primary\/10 {
+    background-color: rgba(16, 185, 129, 0.2);
+    transform: translateY(-2px);
 }
 
 /* Gallery */
@@ -37,11 +47,36 @@ form input:focus {
     .gallery-item img {
         height: 120px;
     }
+    
+    .event-card .flex-col.md\:flex-row {
+        gap: 1rem;
+    }
 }
 
 /* Event date badge */
 .event-card .absolute {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Special offer card animation */
+.event-card.border-l-4.border-yellow-500 {
+    position: relative;
+    overflow: hidden;
+}
+
+.event-card.border-l-4.border-yellow-500::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255,193,7,0) 0%, rgba(255,193,7,0.1) 100%);
+    z-index: 0;
+}
+
+.event-card.border-l-4.border-yellow-500:hover {
+    box-shadow: 0 10px 20px rgba(255, 193, 7, 0.2);
 }
 
 /* Registration button pulse animation */
@@ -57,8 +92,24 @@ form input:focus {
     }
 }
 
-.event-card button:hover {
+@keyframes yellow-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(245, 158, 11, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
+    }
+}
+
+.event-card .bg-primary button:hover {
     animation: pulse 1.5s infinite;
+}
+
+.event-card .bg-yellow-500 button:hover {
+    animation: yellow-pulse 1.5s infinite;
 }
 
 /* Location Filter Styles */

@@ -136,64 +136,199 @@
                 <p class="text-gray-600 mt-2">Register for these exciting fitness events and challenges</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Event Card 1 -->
-                <div class="event-card bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1517130038641-a774d04afb3c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Summer Fitness Challenge" class="w-full h-48 object-cover">
-                        <div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold">Jun 15</div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-dark mb-2">Summer Fitness Challenge</h3>
-                        <p class="text-gray-600 mb-4">A 30-day challenge designed to kickstart your summer fitness routine with daily workouts and nutrition tips.</p>
-                        <div class="flex items-center text-sm text-gray-500 mb-4">
-                            <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            </svg>
-                            <span>Online & Local Parks</span>
+            <div class="space-y-6">
+                <!-- Horizontal Event Card 1 -->
+                <div class="event-card bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-lg border-l-4 border-primary">
+                    <div class="p-5 flex flex-col md:flex-row">
+                        <div class="md:w-1/6 flex-shrink-0 mb-4 md:mb-0">
+                            <div class="bg-primary/10 rounded-lg p-4 text-center">
+                                <span class="block text-primary text-3xl font-bold">15</span>
+                                <span class="block text-primary font-medium">JUN</span>
+                                <span class="block text-gray-500 text-sm mt-1">2025</span>
+                            </div>
                         </div>
-                        <button class="w-full bg-primary hover:bg-dark text-white py-2 rounded-md transition duration-300">Register Now</button>
+                        <div class="md:w-3/5 md:px-6">
+                            <div class="flex items-center mb-2">
+                                <span class="bg-primary/20 text-primary text-xs px-2 py-1 rounded-full font-medium">Featured</span>
+                                <span class="ml-2 bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">30-Day Challenge</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-dark mb-2">Summer Fitness Challenge</h3>
+                            <p class="text-gray-600 mb-3">A 30-day challenge designed to kickstart your summer fitness routine with daily workouts and nutrition tips.</p>
+                            <div class="flex flex-wrap gap-4 text-sm text-gray-500">
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 mr-1 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                    <span>Online & Local Parks</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 mr-1 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span>9:00 AM - 10:30 AM</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:w-1/5 flex items-center justify-center md:justify-end md:pr-4 mt-4 md:mt-0">
+                            <button class="px-6 py-2 bg-primary hover:bg-dark text-white rounded-md transition duration-300">Register Now</button>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Event Card 2 -->
-                <div class="event-card bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="HIIT Workshop" class="w-full h-48 object-cover">
-                        <div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold">Jul 8</div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-dark mb-2">HIIT Workshop</h3>
-                        <p class="text-gray-600 mb-4">Learn high-intensity interval training techniques from fitness experts and optimize your workout efficiency.</p>
-                        <div class="flex items-center text-sm text-gray-500 mb-4">
-                            <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            </svg>
-                            <span>Fitness Center, Downtown</span>
+                <!-- Horizontal Event Card 2 -->
+                <div class="event-card bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-lg border-l-4 border-primary">
+                    <div class="p-5 flex flex-col md:flex-row">
+                        <div class="md:w-1/6 flex-shrink-0 mb-4 md:mb-0">
+                            <div class="bg-primary/10 rounded-lg p-4 text-center">
+                                <span class="block text-primary text-3xl font-bold">8</span>
+                                <span class="block text-primary font-medium">JUL</span>
+                                <span class="block text-gray-500 text-sm mt-1">2025</span>
+                            </div>
                         </div>
-                        <button class="w-full bg-primary hover:bg-dark text-white py-2 rounded-md transition duration-300">Register Now</button>
+                        <div class="md:w-3/5 md:px-6">
+                            <div class="flex items-center mb-2">
+                                <span class="bg-orange-100 text-orange-600 text-xs px-2 py-1 rounded-full font-medium">Workshop</span>
+                                <span class="ml-2 bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">In-Person</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-dark mb-2">HIIT Workshop</h3>
+                            <p class="text-gray-600 mb-3">Learn high-intensity interval training techniques from fitness experts and optimize your workout efficiency.</p>
+                            <div class="flex flex-wrap gap-4 text-sm text-gray-500">
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 mr-1 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                    <span>Fitness Center, Downtown</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 mr-1 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span>2:00 PM - 4:00 PM</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:w-1/5 flex items-center justify-center md:justify-end md:pr-4 mt-4 md:mt-0">
+                            <button class="px-6 py-2 bg-primary hover:bg-dark text-white rounded-md transition duration-300">Register Now</button>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Event Card 3 -->
-                <div class="event-card bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Nutrition Seminar" class="w-full h-48 object-cover">
-                        <div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold">Jul 22</div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-dark mb-2">Nutrition Seminar</h3>
-                        <p class="text-gray-600 mb-4">Join our nutrition experts to learn about meal planning, macro tracking, and optimizing your diet for fitness goals.</p>
-                        <div class="flex items-center text-sm text-gray-500 mb-4">
-                            <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            </svg>
-                            <span>Community Center & Online</span>
+                <!-- Horizontal Event Card 3 -->
+                <div class="event-card bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-lg border-l-4 border-primary">
+                    <div class="p-5 flex flex-col md:flex-row">
+                        <div class="md:w-1/6 flex-shrink-0 mb-4 md:mb-0">
+                            <div class="bg-primary/10 rounded-lg p-4 text-center">
+                                <span class="block text-primary text-3xl font-bold">22</span>
+                                <span class="block text-primary font-medium">JUL</span>
+                                <span class="block text-gray-500 text-sm mt-1">2025</span>
+                            </div>
                         </div>
-                        <button class="w-full bg-primary hover:bg-dark text-white py-2 rounded-md transition duration-300">Register Now</button>
+                        <div class="md:w-3/5 md:px-6">
+                            <div class="flex items-center mb-2">
+                                <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full font-medium">Seminar</span>
+                                <span class="ml-2 bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">Hybrid</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-dark mb-2">Nutrition Seminar</h3>
+                            <p class="text-gray-600 mb-3">Join our nutrition experts to learn about meal planning, macro tracking, and optimizing your diet for fitness goals.</p>
+                            <div class="flex flex-wrap gap-4 text-sm text-gray-500">
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 mr-1 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                    <span>Community Center & Online</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 mr-1 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span>6:30 PM - 8:00 PM</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:w-1/5 flex items-center justify-center md:justify-end md:pr-4 mt-4 md:mt-0">
+                            <button class="px-6 py-2 bg-primary hover:bg-dark text-white rounded-md transition duration-300">Register Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Horizontal Event Card 4 -->
+                <div class="event-card bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-lg border-l-4 border-primary">
+                    <div class="p-5 flex flex-col md:flex-row">
+                        <div class="md:w-1/6 flex-shrink-0 mb-4 md:mb-0">
+                            <div class="bg-primary/10 rounded-lg p-4 text-center">
+                                <span class="block text-primary text-3xl font-bold">5</span>
+                                <span class="block text-primary font-medium">AUG</span>
+                                <span class="block text-gray-500 text-sm mt-1">2025</span>
+                            </div>
+                        </div>
+                        <div class="md:w-3/5 md:px-6">
+                            <div class="flex items-center mb-2">
+                                <span class="bg-purple-100 text-purple-600 text-xs px-2 py-1 rounded-full font-medium">Competition</span>
+                                <span class="ml-2 bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">In-Person</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-dark mb-2">City Marathon</h3>
+                            <p class="text-gray-600 mb-3">Join runners of all levels in our annual marathon event. Options for 5K, 10K, half marathon, and full marathon.</p>
+                            <div class="flex flex-wrap gap-4 text-sm text-gray-500">
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 mr-1 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                    <span>City Park</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 mr-1 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span>7:00 AM Start</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:w-1/5 flex items-center justify-center md:justify-end md:pr-4 mt-4 md:mt-0">
+                            <button class="px-6 py-2 bg-primary hover:bg-dark text-white rounded-md transition duration-300">Register Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Horizontal Event Card 5 (Special Offer) -->
+                <div class="event-card bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-lg border-l-4 border-yellow-500">
+                    <div class="p-5 flex flex-col md:flex-row">
+                        <div class="md:w-1/6 flex-shrink-0 mb-4 md:mb-0">
+                            <div class="bg-yellow-100 rounded-lg p-4 text-center">
+                                <span class="block text-yellow-600 text-3xl font-bold">18</span>
+                                <span class="block text-yellow-600 font-medium">SEP</span>
+                                <span class="block text-gray-500 text-sm mt-1">2025</span>
+                            </div>
+                        </div>
+                        <div class="md:w-3/5 md:px-6">
+                            <div class="flex items-center mb-2">
+                                <span class="bg-yellow-100 text-yellow-600 text-xs px-2 py-1 rounded-full font-medium">Special Offer</span>
+                                <span class="ml-2 bg-red-100 text-red-600 text-xs px-2 py-1 rounded-full">20% OFF</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-dark mb-2">Fall Fitness Bootcamp</h3>
+                            <p class="text-gray-600 mb-3">Intensive 2-week bootcamp designed to kickstart your fall fitness routine. Early registration discount available!</p>
+                            <div class="flex flex-wrap gap-4 text-sm text-gray-500">
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 mr-1 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                    <span>Central Park & Online</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 mr-1 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span>Various Times Available</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:w-1/5 flex items-center justify-center md:justify-end md:pr-4 mt-4 md:mt-0">
+                            <button class="px-6 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-md transition duration-300">Early Bird Offer</button>
+                        </div>
                     </div>
                 </div>
             </div>

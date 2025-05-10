@@ -20,6 +20,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchButton = document.getElementById('search-events');
     const eventCards = document.querySelectorAll('.event-card');
     
+    // Add animation to event cards on page load
+    animateCardsOnLoad();
+    
     if (searchButton) {
         searchButton.addEventListener('click', function() {
             const selectedCity = citySelect.value;
@@ -39,6 +42,22 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 1000);
         });
     }
+    
+    // Add keypress event to trigger search on Enter key
+    [citySelect, countrySelect].forEach(select => {
+        select.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && searchButton) {
+                searchButton.click();
+            }
+        });
+        
+        // Auto-search when dropdown selection changes
+        select.addEventListener('change', function() {
+            if (searchButton) {
+                searchButton.click();
+            }
+        });
+    });
     
     function filterEvents(city, country) {
         console.log(`Filtering events: City=${city}, Country=${country}`);
@@ -67,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
             resultsInfo.id = 'filter-results-info';
             resultsInfo.className = 'text-center text-primary font-medium mb-6';
             const eventsSection = document.querySelector('.container h2').parentNode.parentNode;
-            eventsSection.insertBefore(resultsInfo, eventsSection.querySelector('.grid'));
+            eventsSection.insertBefore(resultsInfo, eventsSection.querySelector('.space-y-6'));
         }
         
         if (!city && !country) {
@@ -90,6 +109,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 hideAllEvents();
             }
         }
+        
+        // Animate cards after filtering
+        animateFilteredCards();
     }
     
     function showAllEvents() {
@@ -151,5 +173,36 @@ document.addEventListener('DOMContentLoaded', function() {
             'mexico': 'Mexico'
         };
         return countryNames[countryValue] || countryValue;
+    }
+    
+    // Animation for cards when the page loads
+    function animateCardsOnLoad() {
+        eventCards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            
+            // Stagger the animations
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 100 * index);
+        });
+    }
+    
+    // Animation for cards after filtering
+    function animateFilteredCards() {
+        const visibleCards = Array.from(eventCards).filter(card => card.style.display !== 'none');
+        
+        visibleCards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            
+            // Stagger the animations
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 100 * index);
+        });
     }
 });
