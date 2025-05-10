@@ -115,8 +115,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Add animation to event cards on page load
-    animateCardsOnLoad();
+    // Hide default event cards on page load
+    hideAllEvents();
+    
+    // Initialize the empty state in search results container (don't search automatically)
     
     if (searchButton) {
         searchButton.addEventListener('click', function() {
@@ -145,12 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Auto-search when dropdown selection changes
-        select.addEventListener('change', function() {
-            if (searchButton) {
-                searchButton.click();
-            }
-        });
+        // No auto-search on dropdown changes - user must click search button
     });
     
     async function filterEvents(city, country) {
@@ -219,29 +216,20 @@ document.addEventListener('DOMContentLoaded', function() {
             'changi': 'singapore'
         };
         
-        // Get results container or create one if it doesn't exist
-        let resultsInfo = document.getElementById('filter-results-info');
-        if (!resultsInfo) {
-            resultsInfo = document.createElement('div');
-            resultsInfo.id = 'filter-results-info';
-            resultsInfo.className = 'text-center text-primary font-medium mb-6';
-            const eventsSection = document.querySelector('.container h2').parentNode.parentNode;
-            eventsSection.insertBefore(resultsInfo, eventsSection.querySelector('.space-y-6'));
-        }
-        
-        // Create or get results container for links
-        let resultsContainer = document.getElementById('event-search-results');
-        if (!resultsContainer) {
-            resultsContainer = document.createElement('div');
-            resultsContainer.id = 'event-search-results';
-            resultsContainer.className = 'mt-8 p-4 bg-white rounded-lg shadow-md';
-            const eventsSection = document.querySelector('.container h2').parentNode.parentNode;
-            eventsSection.insertBefore(resultsContainer, document.getElementById('filter-results-info').nextSibling);
-        }
+        // Get results containers
+        const resultsInfo = document.getElementById('filter-results-info');
+        const resultsContainer = document.getElementById('event-search-results');
         
         if (!city && !country) {
             resultsInfo.textContent = 'Please select a city and/or country to search for events';
-            resultsContainer.innerHTML = '';
+            resultsContainer.classList.remove('has-results');
+            resultsContainer.innerHTML = `
+                <svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                <p class="text-gray-500">No search criteria selected</p>
+                <p class="text-gray-400 text-sm mt-2">Please select at least a country or city</p>
+            `;
             showAllEvents();
             return;
         }
@@ -263,8 +251,17 @@ document.addEventListener('DOMContentLoaded', function() {
             // Generate mock event data based on the selected city and country
             const mockEvents = generateMockEvents(city, country, 8);
             
+            // Add a class to switch layout from centered empty state to list view
+            resultsContainer.classList.add('has-results');
+            
             if (mockEvents.length === 0) {
-                resultsContainer.innerHTML = '<p class="text-gray-600">No event links found. Try a different location.</p>';
+                resultsContainer.classList.remove('has-results');
+                resultsContainer.innerHTML = `
+                    <svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M9.995 15.01a7 7 0 119.39-5.5c.9 3.27-.5 6.79-3.29 8.75L12 22l-4.01-3.74z"></path>
+                    </svg>
+                    <p class="text-gray-600">No event links found. Try a different location.</p>
+                `;
             } else {
                 // Create result list with links
                 let linksHtml = '<ul class="space-y-4">';
