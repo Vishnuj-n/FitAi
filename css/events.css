@@ -23,19 +23,6 @@
     transform: translateY(-2px);
 }
 
-/* Gallery */
-.gallery-item {
-    overflow: hidden;
-}
-
-.gallery-item img {
-    transition: transform 0.5s ease;
-}
-
-.gallery-item:hover img {
-    transform: scale(1.1);
-}
-
 /* Newsletter Form */
 form input:focus {
     box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
@@ -44,10 +31,6 @@ form input:focus {
 
 /* Responsive adjustments */
 @media (max-width: 640px) {
-    .gallery-item img {
-        height: 120px;
-    }
-    
     .event-card .flex-col.md\:flex-row {
         gap: 1rem;
     }
