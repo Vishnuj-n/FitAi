@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Events - FitAi</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom configuration for Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#10B981', // Green
+                        secondary: '#F9FAFB', // White/Light
+                        dark: '#065F46', // Dark Green
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/events.css">
+</head>
+<body class="bg-secondary">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-3">
+                <div class="flex items-center">
+                    <img src="FitAi.png" alt="FitAi Logo" class="h-10 mr-3">
+                    <span class="text-green-600 font-bold text-xl">FitAi</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="text-gray-600 hover:text-primary transition duration-300">Home</a>
+                    <a href="generate.html" class="text-gray-600 hover:text-primary transition duration-300">Generate Plan</a>
+                    <a href="chatbot.html" class="text-gray-600 hover:text-primary transition duration-300">Chatbot</a>
+                    <a href="locate.html" class="text-gray-600 hover:text-primary transition duration-300">Locate</a>
+                    <a href="events.html" class="text-primary font-medium hover:text-dark transition duration-300">Events</a>
+                    <a href="about.html" class="text-gray-600 hover:text-primary transition duration-300">About Us</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-primary transition duration-300">Contact Us</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-500 hover:text-primary focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden pb-4">
+                <a href="index.html" class="block py-2 text-gray-600 hover:text-primary">Home</a>
+                <a href="generate.html" class="block py-2 text-gray-600 hover:text-primary">Generate Plan</a>
+                <a href="chatbot.html" class="block py-2 text-gray-600 hover:text-primary">Chatbot</a>
+                <a href="locate.html" class="block py-2 text-gray-600 hover:text-primary">Locate</a>
+                <a href="events.html" class="block py-2 text-primary font-medium">Events</a>
+                <a href="about.html" class="block py-2 text-gray-600 hover:text-primary">About Us</a>
+                <a href="contact.html" class="block py-2 text-gray-600 hover:text-primary">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Events Hero Section -->
+    <section class="py-16 bg-gradient-to-r from-primary/10 to-secondary">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-dark mb-4">Fitness Events & Challenges</h1>
+                <p class="text-gray-600 max-w-2xl mx-auto">Join our community events, challenges, and workshops to boost your fitness journey and connect with like-minded individuals.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Filter Section -->
+    <section class="py-8 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-primary/5 p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold text-dark mb-4">Find Events Near You</h2>
+                    <div class="flex flex-col md:flex-row gap-4 location-filter">
+                        <div class="flex-1">
+                            <label for="city-select" class="block text-gray-700 font-medium mb-2">City</label>
+                            <select id="city-select" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                                <option value="">Select City</option>
+                                <option value="new-york">New York</option>
+                                <option value="los-angeles">Los Angeles</option>
+                                <option value="chicago">Chicago</option>
+                                <option value="houston">Houston</option>
+                                <option value="miami">Miami</option>
+                                <option value="seattle">Seattle</option>
+                                <option value="boston">Boston</option>
+                                <option value="denver">Denver</option>
+                                <option value="san-francisco">San Francisco</option>
+                                <option value="atlanta">Atlanta</option>
+                            </select>
+                        </div>
+                        <div class="flex-1">
+                            <label for="country-select" class="block text-gray-700 font-medium mb-2">Country</label>
+                            <select id="country-select" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                                <option value="">Select Country</option>
+                                <option value="usa">United States</option>
+                                <option value="canada">Canada</option>
+                                <option value="uk">United Kingdom</option>
+                                <option value="australia">Australia</option>
+                                <option value="germany">Germany</option>
+                                <option value="france">France</option>
+                                <option value="japan">Japan</option>
+                                <option value="india">India</option>
+                                <option value="brazil">Brazil</option>
+                                <option value="mexico">Mexico</option>
+                            </select>
+                        </div>
+                        <div class="md:self-end">
+                            <button id="search-events" class="w-full md:w-auto px-6 py-3 bg-primary hover:bg-dark text-white rounded-lg transition duration-300 flex items-center justify-center">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
+                                Search Events
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Events Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-dark">Upcoming Events</h2>
+                <p class="text-gray-600 mt-2">Register for these exciting fitness events and challenges</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Event Card 1 -->
+                <div class="event-card bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1517130038641-a774d04afb3c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Summer Fitness Challenge" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold">Jun 15</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-dark mb-2">Summer Fitness Challenge</h3>
+                        <p class="text-gray-600 mb-4">A 30-day challenge designed to kickstart your summer fitness routine with daily workouts and nutrition tips.</p>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span>Online & Local Parks</span>
+                        </div>
+                        <button class="w-full bg-primary hover:bg-dark text-white py-2 rounded-md transition duration-300">Register Now</button>
+                    </div>
+                </div>
+                
+                <!-- Event Card 2 -->
+                <div class="event-card bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="HIIT Workshop" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold">Jul 8</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-dark mb-2">HIIT Workshop</h3>
+                        <p class="text-gray-600 mb-4">Learn high-intensity interval training techniques from fitness experts and optimize your workout efficiency.</p>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span>Fitness Center, Downtown</span>
+                        </div>
+                        <button class="w-full bg-primary hover:bg-dark text-white py-2 rounded-md transition duration-300">Register Now</button>
+                    </div>
+                </div>
+                
+                <!-- Event Card 3 -->
+                <div class="event-card bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Nutrition Seminar" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold">Jul 22</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-dark mb-2">Nutrition Seminar</h3>
+                        <p class="text-gray-600 mb-4">Join our nutrition experts to learn about meal planning, macro tracking, and optimizing your diet for fitness goals.</p>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span>Community Center & Online</span>
+                        </div>
+                        <button class="w-full bg-primary hover:bg-dark text-white py-2 rounded-md transition duration-300">Register Now</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <button class="px-6 py-3 bg-primary hover:bg-dark text-white rounded-md transition duration-300">View All Events</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Past Events Gallery Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-dark">Event Highlights</h2>
+                <p class="text-gray-600 mt-2">Check out photos from our previous fitness events</p>
+            </div>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                <!-- Gallery Images -->
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Marathon Event" class="w-full h-40 object-cover hover:scale-110 transition duration-300">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Yoga Session" class="w-full h-40 object-cover hover:scale-110 transition duration-300">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Group Fitness" class="w-full h-40 object-cover hover:scale-110 transition duration-300">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1518459031867-a89b944bffe4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Fitness Challenge" class="w-full h-40 object-cover hover:scale-110 transition duration-300">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1595078475328-1ab05d0a6a0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Outdoor Training" class="w-full h-40 object-cover hover:scale-110 transition duration-300">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1542766788-a2f650c4b261?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Workshop" class="w-full h-40 object-cover hover:scale-110 transition duration-300">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1530822847156-e092cb0b0e01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Awards Ceremony" class="w-full h-40 object-cover hover:scale-110 transition duration-300">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Fitness Meetup" class="w-full h-40 object-cover hover:scale-110 transition duration-300">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Event Newsletter Section -->
+    <section class="py-16 bg-primary/10">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-dark mb-4">Stay Updated</h2>
+                <p class="text-gray-600 mb-8">Subscribe to our newsletter to receive notifications about upcoming events and exclusive fitness content.</p>
+                
+                <form class="flex flex-col sm:flex-row gap-4">
+                    <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-l-md border focus:outline-none focus:ring-2 focus:ring-primary">
+                    <button type="submit" class="bg-primary hover:bg-dark text-white px-6 py-3 rounded-r-md transition duration-300 sm:flex-shrink-0">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center">
+                        <img src="FitAi.png" alt="FitAi Logo" class="h-8 mr-3">
+                        <span class="text-white font-bold text-xl">FitAi</span>
+                    </div>
+                    <p class="text-gray-300 mt-2 max-w-xs">Transforming fitness through AI innovation and personalized guidance.</p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                        <ul class="space-y-2">
+                            <li><a href="index.html" class="text-gray-300 hover:text-white transition">Home</a></li>
+                            <li><a href="generate.html" class="text-gray-300 hover:text-white transition">Generate Plan</a></li>
+                            <li><a href="chatbot.html" class="text-gray-300 hover:text-white transition">Chatbot</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">More Info</h3>
+                        <ul class="space-y-2">
+                            <li><a href="locate.html" class="text-gray-300 hover:text-white transition">Locate</a></li>
+                            <li><a href="events.html" class="text-gray-300 hover:text-white transition">Events</a></li>
+                            <li><a href="about.html" class="text-gray-300 hover:text-white transition">About Us</a></li>
+                            <li><a href="contact.html" class="text-gray-300 hover:text-white transition">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Legal</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-300 hover:text-white transition">Privacy Policy</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition">Terms of Service</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center md:text-left md:flex md:justify-between md:items-center">
+                <p class="text-gray-400">© 2025 FitAi. All rights reserved.</p>
+                <div class="mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white mx-2 transition">Privacy</a>
+                    <a href="#" class="text-gray-400 hover:text-white mx-2 transition">Terms</a>
+                    <a href="#" class="text-gray-400 hover:text-white mx-2 transition">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="env-preload.js"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+    <script src="events.js"></script>
+</body>
+</html>
