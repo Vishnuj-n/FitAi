@@ -115,40 +115,30 @@
         </div>
     </section>
 
-    <!-- Upcoming Events Section -->
+    <!-- Event Search Results Section -->
     <section class="py-16 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-dark">Upcoming Events</h2>
-                <p class="text-gray-600 mt-2">Register for these exciting fitness events and challenges</p>
+                <h2 class="text-3xl font-bold text-dark">Event Search Results</h2>
+                <p class="text-gray-600 mt-2">Use the search function above to find fitness events</p>
             </div>
             
-            <div class="space-y-6">
-                <!-- Horizontal Event Card 1 -->
-                <div class="event-card bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-lg border-l-4 border-primary">
-                    <div class="p-5 flex flex-col md:flex-row">
-                        <div class="md:w-1/6 flex-shrink-0 mb-4 md:mb-0">
-                            <div class="bg-primary/10 rounded-lg p-4 text-center">
-                                <span class="block text-primary text-3xl font-bold">15</span>
-                                <span class="block text-primary font-medium">JUN</span>
-                                <span class="block text-gray-500 text-sm mt-1">2025</span>
-                            </div>
-                        </div>
-                        <div class="md:w-3/5 md:px-6">
-                            <div class="flex items-center mb-2">
-                                <span class="bg-primary/20 text-primary text-xs px-2 py-1 rounded-full font-medium">Featured</span>
-                                <span class="ml-2 bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">30-Day Challenge</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-dark mb-2">Summer Fitness Challenge</h3>
-                            <p class="text-gray-600 mb-3">A 30-day challenge designed to kickstart your summer fitness routine with daily workouts and nutrition tips.</p>
-                            <div class="flex flex-wrap gap-4 text-sm text-gray-500">
-                                <div class="flex items-center">
-                                    <svg class="w-4 h-4 mr-1 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                    </svg>
-                                    <span>Online & Local Parks</span>
-                                </div>
+            <!-- Search Results Container -->
+            <div id="filter-results-info" class="text-center text-primary font-medium mb-6">
+                Please click the "Search Events" button to find events in your area
+            </div>
+            
+            <div id="event-search-results" class="mt-8 p-4 bg-white rounded-lg shadow-md text-center">
+                <svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                <p class="text-gray-500">No search results to display yet</p>
+                <p class="text-gray-400 text-sm mt-2">Click the "Search Events" button to begin</p>
+            </div>
+            
+            <!-- No default event cards needed -->
+            <div class="hidden">
+                <!-- Hidden content - Register buttons removed -->
                                 <div class="flex items-center">
                                     <svg class="w-4 h-4 mr-1 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -158,7 +148,7 @@
                             </div>
                         </div>
                         <div class="md:w-1/5 flex items-center justify-center md:justify-end md:pr-4 mt-4 md:mt-0">
-                            <button class="px-6 py-2 bg-primary hover:bg-dark text-white rounded-md transition duration-300">Register Now</button>
+                            <!-- Register Now button removed -->
                         </div>
                     </div>
                 </div>
@@ -197,7 +187,7 @@
                             </div>
                         </div>
                         <div class="md:w-1/5 flex items-center justify-center md:justify-end md:pr-4 mt-4 md:mt-0">
-                            <button class="px-6 py-2 bg-primary hover:bg-dark text-white rounded-md transition duration-300">Register Now</button>
+                            <!-- Register Now button removed -->
                         </div>
                     </div>
                 </div>
@@ -236,7 +226,7 @@
                             </div>
                         </div>
                         <div class="md:w-1/5 flex items-center justify-center md:justify-end md:pr-4 mt-4 md:mt-0">
-                            <button class="px-6 py-2 bg-primary hover:bg-dark text-white rounded-md transition duration-300">Register Now</button>
+                            <!-- Register Now button removed -->
                         </div>
                     </div>
                 </div>
@@ -275,7 +265,7 @@
                             </div>
                         </div>
                         <div class="md:w-1/5 flex items-center justify-center md:justify-end md:pr-4 mt-4 md:mt-0">
-                            <button class="px-6 py-2 bg-primary hover:bg-dark text-white rounded-md transition duration-300">Register Now</button>
+                            <!-- Register Now button removed -->
                         </div>
                     </div>
                 </div>
@@ -314,29 +304,10 @@
                             </div>
                         </div>
                         <div class="md:w-1/5 flex items-center justify-center md:justify-end md:pr-4 mt-4 md:mt-0">
-                            <button class="px-6 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-md transition duration-300">Early Bird Offer</button>
+                            <!-- Early Bird Offer button removed -->
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="text-center mt-10">
-                <button class="px-6 py-3 bg-primary hover:bg-dark text-white rounded-md transition duration-300">View All Events</button>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Event Newsletter Section -->
-    <section class="py-16 bg-primary/10">
-        <div class="container mx-auto px-4">
-            <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-3xl font-bold text-dark mb-4">Stay Updated</h2>
-                <p class="text-gray-600 mb-8">Subscribe to our newsletter to receive notifications about upcoming events and exclusive fitness content.</p>
-                
-                <form class="flex flex-col sm:flex-row gap-4">
-                    <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-l-md border focus:outline-none focus:ring-2 focus:ring-primary">
-                    <button type="submit" class="bg-primary hover:bg-dark text-white px-6 py-3 rounded-r-md transition duration-300 sm:flex-shrink-0">Subscribe</button>
-                </form>
             </div>
         </div>
     </section>
