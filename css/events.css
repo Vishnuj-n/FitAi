@@ -101,6 +101,52 @@ form input:focus {
     overflow: hidden;
 }
 
+/* Serper API Search Results Styles */
+#event-search-results {
+    transition: all 0.3s ease;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+#event-search-results ul {
+    list-style: none;
+    padding: 0;
+}
+
+#event-search-results li {
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+#event-search-results li:hover {
+    background-color: rgba(16, 185, 129, 0.05);
+}
+
+#event-search-results a {
+    display: block;
+    color: #10B981;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+#event-search-results a:hover {
+    color: #065F46;
+    text-decoration: underline;
+}
+
+/* Loading animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
 #search-events::after {
     content: '';
     position: absolute;

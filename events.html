@@ -83,35 +83,22 @@
                     <h2 class="text-2xl font-bold text-dark mb-4">Find Events Near You</h2>
                     <div class="flex flex-col md:flex-row gap-4 location-filter">
                         <div class="flex-1">
-                            <label for="city-select" class="block text-gray-700 font-medium mb-2">City</label>
-                            <select id="city-select" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
-                                <option value="">Select City</option>
-                                <option value="new-york">New York</option>
-                                <option value="los-angeles">Los Angeles</option>
-                                <option value="chicago">Chicago</option>
-                                <option value="houston">Houston</option>
-                                <option value="miami">Miami</option>
-                                <option value="seattle">Seattle</option>
-                                <option value="boston">Boston</option>
-                                <option value="denver">Denver</option>
-                                <option value="san-francisco">San Francisco</option>
-                                <option value="atlanta">Atlanta</option>
-                            </select>
-                        </div>
-                        <div class="flex-1">
                             <label for="country-select" class="block text-gray-700 font-medium mb-2">Country</label>
                             <select id="country-select" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
                                 <option value="">Select Country</option>
+                                <option value="india" selected>India</option>
                                 <option value="usa">United States</option>
-                                <option value="canada">Canada</option>
                                 <option value="uk">United Kingdom</option>
                                 <option value="australia">Australia</option>
-                                <option value="germany">Germany</option>
-                                <option value="france">France</option>
                                 <option value="japan">Japan</option>
-                                <option value="india">India</option>
-                                <option value="brazil">Brazil</option>
-                                <option value="mexico">Mexico</option>
+                                <option value="singapore">Singapore</option>
+                            </select>
+                        </div>
+                        <div class="flex-1">
+                            <label for="city-select" class="block text-gray-700 font-medium mb-2">City</label>
+                            <select id="city-select" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                                <option value="">Select City</option>
+                                <!-- City options will be populated dynamically -->
                             </select>
                         </div>
                         <div class="md:self-end">
