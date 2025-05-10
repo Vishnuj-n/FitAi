@@ -234,61 +234,50 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Get proper display names for city and country
-        const cityName = getCityName(city);
-        const countryName = getCountryName(country);
+        // Build search query
+        const cityName = city ? getCityName(city) : '';
+        const countryName = country ? getCountryName(country) : '';
+        const searchQuery = `${cityName} ${countryName} fitness events`.trim();
         
         resultsInfo.textContent = `Searching for events in ${cityName}${countryName ? ', ' + countryName : ''}...`;
         
         try {
-            // Check if our API method exists before calling it
-            let eventLinks = [];
-            let apiSuccess = false;
+            // For demo purposes, create mock event data instead of using API
+            // This simulates a successful response from the Serper API
             
-            // Only attempt to use the API if the function exists
-            if (typeof get_event_registration_links === 'function') {
-                try {
-                    console.log(`Calling get_event_registration_links for ${cityName}, ${countryName}`);
-                    // Call our new function to get event registration links
-                    // Note: Direct API calls to Serper from the browser fail due to CORS restrictions
-                    // In a production environment, this would call a backend proxy API
-                    eventLinks = await get_event_registration_links(cityName, countryName);
-                    apiSuccess = true;
-                    console.log(`Successfully retrieved ${eventLinks.length} event links via API`);
-                } catch (apiError) {
-                    console.error('API Error:', apiError);
-                    apiSuccess = false;
-                }
-            } else {
-                console.warn('get_event_registration_links function not found, using mock data');
-            }
+            console.log('Search query:', searchQuery);
+            resultsInfo.textContent = `Events found in ${cityName}${countryName ? ', ' + countryName : ''}`;
             
-            // Update results info
-            if (apiSuccess) {
-                resultsInfo.textContent = `Events found in ${cityName}${countryName ? ', ' + countryName : ''}`;
-            } else {
-                resultsInfo.textContent = `Using sample events for ${cityName}${countryName ? ', ' + countryName : ''}`;
-            }
+            // Generate mock event data based on the selected city and country
+            const mockEvents = generateMockEvents(city, country, 8);
             
             // Add a class to switch layout from centered empty state to list view
             resultsContainer.classList.add('has-results');
             
-            // Display API results if available
-            if (apiSuccess && eventLinks && eventLinks.length > 0) {
+            if (mockEvents.length === 0) {
+                resultsContainer.classList.remove('has-results');
+                resultsContainer.innerHTML = `
+                    <svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M9.995 15.01a7 7 0 119.39-5.5c.9 3.27-.5 6.79-3.29 8.75L12 22l-4.01-3.74z"></path>
+                    </svg>
+                    <p class="text-gray-600">No event links found. Try a different location.</p>
+                `;
+            } else {
                 // Create result list with links
                 let linksHtml = '<ul class="space-y-4">';
-                eventLinks.forEach(event => {
+                mockEvents.forEach(event => {
                     linksHtml += `
                         <li class="border-b pb-4">
-                            <a href="${event.url}" target="_blank" class="text-primary hover:text-dark font-medium text-lg">
-                                ${event.name}
+                            <a href="${event.link}" target="_blank" class="text-primary hover:text-dark font-medium text-lg">
+                                ${event.title}
                             </a>
+                            <p class="text-gray-600 mt-1">${event.description}</p>
                             <div class="flex flex-wrap gap-2 mt-2">
                                 <span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
                                     ${event.date}
                                 </span>
                                 <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full">
-                                    ${cityName}, ${countryName}
+                                    ${event.location}
                                 </span>
                             </div>
                         </li>
@@ -297,67 +286,68 @@ document.addEventListener('DOMContentLoaded', function() {
                 linksHtml += '</ul>';
                 
                 resultsContainer.innerHTML = linksHtml;
-            } 
-            // If no API results or API failed, use mock data
-            else {
-                const mockEvents = generateMockEvents(city, country, 5);
-                
-                if (mockEvents.length === 0) {
-                    resultsContainer.classList.remove('has-results');
-                    resultsContainer.innerHTML = `
-                        <svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M9.995 15.01a7 7 0 119.39-5.5c.9 3.27-.5 6.79-3.29 8.75L12 22l-4.01-3.74z"></path>
-                        </svg>
-                        <p class="text-gray-600">No event links found. Try a different location.</p>
-                    `;
-                } else {
-                    // Create result list with mock event links
-                    let linksHtml = '<ul class="space-y-4">';
-                    mockEvents.forEach(event => {
+            }
+            
+            /* 
+            // Real Serper API implementation (commented out for now)
+            const serperApiKey = window.FitAiConfig.apiKeys.serper;
+            const serperBaseUrl = window.FitAiConfig.apiBaseUrls.serper;
+            
+            if (!serperApiKey) {
+                throw new Error('Serper API key not found');
+            }
+            
+            // Call Serper API to get event links
+            const response = await fetch(`${serperBaseUrl}/search`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-API-KEY': serperApiKey
+                },
+                body: JSON.stringify({
+                    q: searchQuery,
+                    num: 10
+                })
+            });
+            
+            if (!response.ok) {
+                throw new Error('Failed to fetch search results');
+            }
+            
+            const data = await response.json();
+            
+            // Display search results (links only)
+            resultsInfo.textContent = `Events found in ${cityName}${countryName ? ', ' + countryName : ''}`;
+            
+            // Extract and display links from search results
+            const links = data.organic || [];
+            
+            if (links.length === 0) {
+                resultsContainer.innerHTML = '<p class="text-gray-600">No event links found. Try a different location.</p>';
+            } else {
+                // Create result list with links only
+                let linksHtml = '<ul class="space-y-4">';
+                links.forEach(result => {
+                    if (result.link) {
                         linksHtml += `
-                            <li class="border-b pb-4">
-                                <a href="${event.link}" target="_blank" class="text-primary hover:text-dark font-medium text-lg">
-                                    ${event.title}
+                            <li class="border-b pb-2">
+                                <a href="${result.link}" target="_blank" class="text-primary hover:text-dark font-medium">
+                                    ${result.title || 'Event Link'}
                                 </a>
-                                <p class="text-gray-600 mt-1">${event.description}</p>
-                                <div class="flex flex-wrap gap-2 mt-2">
-                                    <span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
-                                        ${event.date}
-                                    </span>
-                                    <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full">
-                                        ${event.location}
-                                    </span>
-                                </div>
                             </li>
                         `;
-                    });
-                    linksHtml += '</ul>';
-                    
-                    resultsContainer.innerHTML = linksHtml;
-                    
-                    // Add note about using mock data if the API call failed
-                    if (typeof get_event_registration_links === 'function') {
-                        resultsContainer.insertAdjacentHTML('beforeend', 
-                            `<p class="text-sm text-gray-500 mt-6 italic text-center">
-                                Note: Sample event data is being displayed. 
-                                ${apiSuccess ? 'No real events found.' : 'API error occurred.'}
-                            </p>`
-                        );
                     }
-                }
+                });
+                linksHtml += '</ul>';
+                
+                resultsContainer.innerHTML = linksHtml;
             }
+            */
+            
         } catch (error) {
-            console.error('Error in filterEvents:', error);
+            console.error('Error searching events:', error);
             resultsInfo.textContent = 'Error searching for events. Please try again.';
-            resultsContainer.innerHTML = `
-                <div class="text-center">
-                    <svg class="w-16 h-16 mx-auto text-red-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                    <p class="text-red-500">Error: ${error.message}</p>
-                    <p class="text-gray-500 mt-4">Try selecting a different location or reload the page.</p>
-                </div>
-            `;
+            resultsContainer.innerHTML = `<p class="text-red-500">Error: ${error.message}</p>`;
         }
         
         // Hide the default event cards when showing search results

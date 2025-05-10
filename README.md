@@ -7,12 +7,7 @@ FitAi is a comprehensive fitness platform leveraging artificial intelligence to 
 - **Personalized Workout Plans**: Generate custom fitness routines based on goals, experience, and preferences
 - **AI Fitness Assistant**: Chat with our AI to get fitness advice and answers to health questions
 - **Gym & Park Locator**: Find fitness facilities and outdoor workout spaces near you using TomTom Maps
-- **Event Search**: Find fitness events, marathons, and sports activities in your area
 - **Mobile-Responsive Design**: Works seamlessly across all devices
-
-## Developer Notes
-
-- See [API Implementation Notes](API_IMPLEMENTATION_NOTES.md) for details on how to properly implement the Serper API for production use
 
 ## Deployment
 
